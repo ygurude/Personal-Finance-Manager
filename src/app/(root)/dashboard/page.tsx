@@ -62,6 +62,7 @@ const Dashboard = async ({ searchParams: { id, page } }: SearchParamProps) => {
           transactions={account?.transactions}
           banks={accountsData?.slice(0,2)}
         />
+        
       </div>
     </section>
     // <section className="no-scrollbar flex w-full flex-row max-xl:max-h-screen max-xl:overflow-y-scroll">
