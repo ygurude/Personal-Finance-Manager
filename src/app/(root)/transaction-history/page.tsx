@@ -9,9 +9,12 @@ import React from 'react'
 const TransactionHistory = async ({ searchParams: {id, page}}: SearchParamProps) => {
   const currentPage = Number(page as string) || 1;
     const loggedIn = await getLoggedInUser();
+    if (!loggedIn) return;
     const accounts = await getAccounts({
       userId: loggedIn.$id
     });
+
+    if (!accounts) return;
   
     const appwriteItemId = (id as string ) || accounts?.data[0]?.appwriteItemId;
   
@@ -19,7 +22,7 @@ const TransactionHistory = async ({ searchParams: {id, page}}: SearchParamProps)
       appwriteItemId
     });
   
-    if (!accounts) return;
+    if (!account) return;
   
     const accountsData = accounts?.data;
 
