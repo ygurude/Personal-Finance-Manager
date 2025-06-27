@@ -6,9 +6,14 @@ import React from 'react'
 
 const MyBanks = async () => {
   const loggedIn = await getLoggedInUser();
+  if (!loggedIn) return <div> Please log in</div>;
+
   const accounts = await getAccounts({
     userId: loggedIn.$id
   });
+
+  if (!accounts || accounts.data) return <div>No accounts found</div>;
+
   return (
     <section className="flex">
       <div className="flex h-screen max-h-screen w-full flex-col gap-8 bg-gray-100 p-8 xl:py-12">
